@@ -1,5 +1,5 @@
 return {
-    "bartekprtc/distinct.nvim",
+    "https://gitlab.com/bartekjaszczak/distinct-nvim",
     dev = false,
 
     priority = 1000,
