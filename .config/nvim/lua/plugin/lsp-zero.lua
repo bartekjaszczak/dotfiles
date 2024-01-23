@@ -31,7 +31,15 @@ return {
         local lsp = require("lsp-zero").preset({})
 
         lsp.on_attach(function(client, bufnr)
-            lsp.default_keymaps({ buffer = bufnr })
+            lsp.default_keymaps({
+                buffer = bufnr,
+                exclude = { -- These are provided via Telescope
+                    "gr",
+                    "gi",
+                    "gd",
+                    "go",
+                }
+            })
             require("lsp_signature").on_attach()
         end)
 
@@ -197,10 +205,12 @@ return {
                 { name = "neorg" },
             }),
             formatting = {
-                fields = { "menu", "abbr", "kind" },
+                fields = { "menu", "kind", "abbr" },
                 format = function(entry, vim_item)
-                    -- Kind icons
-                    vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+                    -- Kind icons (with names)
+                    -- vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+                    -- Kind icons (without names)
+                    vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
                     -- Source
                     vim_item.menu = ({
                         buffer = "",
@@ -223,6 +233,10 @@ return {
                         and not context.in_syntax_group("Comment")
                 end
             end,
+            window = {
+                documentation = cmp.config.window.bordered(),
+                completion = cmp.config.window.bordered(),
+            }
         })
     end,
 }
