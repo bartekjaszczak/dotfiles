@@ -1,14 +1,17 @@
 return {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim", -- null-ls is archived, none-ls is a fork
 
     config = function()
         local null_ls = require("null-ls")
 
         null_ls.setup({
-            debug = true,
             sources = {
                 null_ls.builtins.formatting.stylua,
                 null_ls.builtins.formatting.clang_format,
+                -- null_ls.builtins.formatting.prettier, -- don't need this if we have prettierd
+                null_ls.builtins.formatting.prettierd,
+                -- null_ls.builtins.code_actions.eslint, -- don't need this if we have eslint_d
+                null_ls.builtins.code_actions.eslint_d,
             },
         })
     end,
