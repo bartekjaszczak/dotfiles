@@ -107,6 +107,21 @@ return {
             },
         })
 
+        --------- Bash
+        lspconfig.bashls.setup({})
+
+        --------- CMake
+        lspconfig.cmake.setup({})
+
+        --------- XML
+        lspconfig.lemminx.setup({})
+
+        --------- Markdown
+        lspconfig.marksman.setup({})
+
+
+
+
         lsp.setup()
 
         -------- cmp config
