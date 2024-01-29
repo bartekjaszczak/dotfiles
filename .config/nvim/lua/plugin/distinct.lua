@@ -1,6 +1,6 @@
 return {
     "https://gitlab.com/bartekjaszczak/distinct-nvim",
-    dev = false,
+    dev = true,
 
     priority = 1000,
 
