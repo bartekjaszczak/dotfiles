@@ -7,5 +7,13 @@ return {
         -- vim.g.vimtex_view_general_options = "--unique file:@pdf\\#src:@line@tex"
 
         vim.g.maplocalleader = " "
+        local vimscript = [[
+        augroup vimtex
+          autocmd!
+          autocmd User VimtexEventView call b:vimtex.viewer.xdo_focus_vim()
+        augroup END
+        ]]
+
+        vim.api.nvim_exec(vimscript, true)
     end,
 }
