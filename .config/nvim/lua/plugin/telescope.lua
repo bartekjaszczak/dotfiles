@@ -77,8 +77,7 @@ return {
                         --     + require("telescope.actions").open_qflist,
                         ["<Esc>"] = require("telescope.actions").close,
 
-                        ["<C-s>"] = require("telescope.actions").select_horizontal,
-                        ["<C-S-s>"] = require("telescope.actions").select_vertical,
+                        ["<C-s>"] = require("telescope.actions").select_vertical,
                     },
                 },
             },
