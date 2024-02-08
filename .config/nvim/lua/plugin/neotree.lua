@@ -37,6 +37,10 @@ return {
             selection_chars = "TNSERIAO", -- for colemak
         })
 
+        -- Disable netrw
+        vim.g.loaded_netrw = 0
+        vim.g.loaded_netrwPlugin = 0
+
         -- Unless you are still migrating, remove the deprecated commands from v1.x
         vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
