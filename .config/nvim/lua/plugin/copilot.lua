@@ -11,7 +11,7 @@ return {
             },
             suggestion = {
                 enabled = true,
-                auto_trigger = true,
+                auto_trigger = false, -- Alt+] to trigger
                 debounce = 75,
                 keymap = {
                     accept = "<M-l>",
