@@ -40,3 +40,6 @@ vim.opt.conceallevel = 2
 
 vim.lsp.set_log_level("off")
 -- vim.lsp.set_log_level("trace")
+
+vim.opt.spell = true
+vim.opt.spelllang = "en_gb,pl"
