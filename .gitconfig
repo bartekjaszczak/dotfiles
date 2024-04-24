@@ -1,0 +1,16 @@
+[user]
+	name = Bartek Jaszczak
+	email = bartlomiej.jaszczak@proton.me
+	signingkey = /home/bartek/.ssh/id_ed25519.pub
+[init]
+	defaultBranch = main
+[core]
+	editor = nvim
+	excludesfile = /home/bartek/.gitignore_global
+	fsmonitor = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[gpg]
+	format = ssh
