@@ -5,7 +5,7 @@ return {
 
     dependencies = {
         "mfussenegger/nvim-dap",
-        "folke/neodev.nvim",
+        "nvim-neotest/nvim-nio",
     },
 
     config = function()
@@ -56,6 +56,7 @@ return {
         dap.configurations.rust = dap.configurations.cpp
 
         -- Python (debugpy in .virtualenvs)
+        -- see https://github.com/mfussenegger/nvim-dap-python
         dap.adapters.python = function(cb, config)
             if config.request == "attach" then
                 ---@diagnostic disable-next-line: undefined-field
