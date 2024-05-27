@@ -33,3 +33,5 @@ set font "CaskaydiaCove Nerd Font Mono 12"
 
 set highlight-active-color rgba(253,237,48,0.4)
 set highlight-color rgba(236,103,31,0.4)
+
+map <C-Button1> follow
