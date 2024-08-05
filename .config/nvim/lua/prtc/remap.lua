@@ -17,9 +17,9 @@ map("n", "<leader>Y", '"+Y')
 map("n", "<leader>d", '"_d')
 map("v", "<leader>d", '"_d')
 
-map("n", "<C-j>", "<cmd>cnext<CR>zz")
-map("n", "<C-k>", "<cmd>cprev<CR>zz")
-map("n", "<leader>j", "<cmd>lnext<CR>zz")
-map("n", "<leader>k", "<cmd>lprev<CR>zz")
+-- map("n", "<C-j>", "<cmd>cnext<CR>zz")
+-- map("n", "<C-k>", "<cmd>cprev<CR>zz")
+-- map("n", "<leader>j", "<cmd>lnext<CR>zz")
+-- map("n", "<leader>k", "<cmd>lprev<CR>zz")
 
 map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])

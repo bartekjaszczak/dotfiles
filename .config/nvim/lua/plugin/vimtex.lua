@@ -14,6 +14,6 @@ return {
         augroup END
         ]]
 
-        vim.api.nvim_exec(vimscript, true)
+        vim.cmd(vimscript)
     end,
 }
