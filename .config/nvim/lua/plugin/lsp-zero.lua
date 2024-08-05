@@ -1,7 +1,7 @@
 return {
     "vonheikemen/lsp-zero.nvim",
 
-    branch = "v2.x",
+    branch = "v4.x",
     dependencies = {
         -- lsp support
         { "neovim/nvim-lspconfig" }, -- required
@@ -27,11 +27,13 @@ return {
     },
 
     config = function()
-        -------- lsp-zero & nvim-lspconfig config
-        local lsp = require("lsp-zero").preset({})
+        -----------------------------------------------------------------------
+        --- lsp-zero setup ----------------------------------------------------
+        -----------------------------------------------------------------------
+        local lsp_zero = require("lsp-zero")
 
-        lsp.on_attach(function(client, bufnr)
-            lsp.default_keymaps({
+        local lsp_attach = function(client, bufnr)
+            lsp_zero.default_keymaps({
                 buffer = bufnr,
                 exclude = { -- These are provided via Telescope
                     "gr",
@@ -41,12 +43,22 @@ return {
                 }
             })
             require("lsp_signature").on_attach()
-        end)
+        end
+
+        lsp_zero.extend_lspconfig({
+            lsp_attach = lsp_attach,
+            sign_text = true,
+            capabilities = require("cmp_nvim_lsp").default_capabilities()
+        })
+
+        -----------------------------------------------------------------------
+        --- lspconfig setup ---------------------------------------------------
+        -----------------------------------------------------------------------
 
         local lspconfig = require("lspconfig")
 
         -------- Lua
-        lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+        lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
 
         -------- TeX / LaTeX
         lspconfig.texlab.setup({})
@@ -120,11 +132,9 @@ return {
         lspconfig.marksman.setup({})
 
 
-
-
-        lsp.setup()
-
-        -------- cmp config
+        -----------------------------------------------------------------------
+        --- cmp setup ---------------------------------------------------------
+        -----------------------------------------------------------------------
         local has_words_before = function()
             unpack = unpack or table.unpack
             local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -168,8 +178,6 @@ return {
         local cmp = require("cmp")
         local cmp_autopairs = require("nvim-autopairs.completion.cmp")
         cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-
-        local cmp_action = require("lsp-zero").cmp_action()
 
         cmp.setup({
             snippet = {
@@ -217,13 +225,12 @@ return {
                 { name = "path" },
                 { name = "nvim_lua" },
                 { name = "buffer", keyword_length = 3 },
-                { name = "neorg" },
             }),
             formatting = {
                 fields = { "menu", "kind", "abbr" },
                 format = function(entry, vim_item)
                     -- Kind icons (with names)
-                    -- vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+                    -- vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatenates the icons with the name of the item kind
                     -- Kind icons (without names)
                     vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
                     -- Source
@@ -239,14 +246,14 @@ return {
             },
             enabled = function()
                 -- disable autocompletion in prompt
-                local buftype = vim.api.nvim_buf_get_option(0, "buftype")
+                local buftype = vim.api.nvim_get_option_value("buftype", {})
                 if buftype == "prompt" then
                     return false
                 end
 
                 -- disable completion in comments
                 local context = require("cmp.config.context")
-                -- keep command mode completion enabled when cursor is in a comment commfalse
+                -- keep command mode completion enabled when cursor is in a comment
                 if vim.api.nvim_get_mode().mode == "c" then
                     return false
                 else
