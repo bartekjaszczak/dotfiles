@@ -189,6 +189,8 @@ return {
         local cmp_autopairs = require("nvim-autopairs.completion.cmp")
         cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
+        require("luasnip.loaders.from_vscode").lazy_load()
+
         cmp.setup({
             snippet = {
                 expand = function(args)
@@ -231,7 +233,7 @@ return {
             }),
             sources = cmp.config.sources({
                 { name = "nvim_lsp" },
-                { name = "luasnip", keyword_length = 2 },
+                { name = "luasnip" },
                 { name = "path" },
                 { name = "nvim_lua" },
                 { name = "buffer",  keyword_length = 3 },
