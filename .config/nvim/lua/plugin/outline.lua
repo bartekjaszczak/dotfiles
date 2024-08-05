@@ -1,14 +1,76 @@
 return {
-  "hedyhli/outline.nvim",
-  lazy = true,
-  cmd = { "Outline", "OutlineOpen" },
-  keys = {
-      {"<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline"},
-  },
-  config = function()
+    "hedyhli/outline.nvim",
+    lazy = true,
+    cmd = { "Outline", "OutlineOpen" },
+    keys = {
+        { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
+    },
+    config = function()
+        local kind_icons = {
+            Text = "",
+            Method = "󰆧",
+            Function = "󰊕",
+            Constructor = "",
+            Field = "󰇽",
+            Variable = "󰂡",
+            Class = "󰠱",
+            Interface = "",
+            Module = "",
+            Property = "󰜢",
+            Unit = "",
+            Value = "󰎠",
+            Enum = "",
+            Keyword = "󰌋",
+            Snippet = "",
+            Color = "󰏘",
+            File = "󰈙",
+            Reference = "",
+            Folder = "󰉋",
+            EnumMember = "",
+            Constant = "󰏿",
+            Struct = "",
+            Event = "",
+            Operator = "󰆕",
+            TypeParameter = "󰅲",
+        }
 
-    require("outline").setup {
-      -- Your setup opts here (leave empty to use defaults)
-    }
-  end,
+        require("outline").setup({
+            symbols = {
+                icons = {
+                    File = { icon = kind_icons.File, hl = "Identifier" },
+                    Module = { icon = kind_icons.Snippet, hl = "Include" },
+                    Namespace = { icon = kind_icons.Snippet, hl = "Include" },
+                    Package = { icon = kind_icons.Snippet, hl = "Include" },
+                    Class = { icon = kind_icons.Class, hl = "Type" },
+                    Method = { icon = kind_icons.Method, hl = "Function" },
+                    Property = { icon = kind_icons.Property, hl = "Identifier" },
+                    Field = { icon = kind_icons.Field, hl = "Identifier" },
+                    Constructor = { icon = kind_icons.Constructor, hl = "Special" },
+                    Enum = { icon = kind_icons.Enum, hl = "Type" },
+                    Interface = { icon = kind_icons.Interface, hl = "Type" },
+                    Function = { icon = kind_icons.Function, hl = "Function" },
+                    Variable = { icon = kind_icons.Variable, hl = "Constant" },
+                    Constant = { icon = kind_icons.Constant, hl = "Constant" },
+                    String = { icon = kind_icons.Text, hl = "String" },
+                    Number = { icon = kind_icons.Value, hl = "Number" },
+                    Boolean = { icon = kind_icons.Value, hl = "Boolean" },
+                    Array = { icon = "󰅪", hl = "Constant" },
+                    Object = { icon = kind_icons.Class, hl = "Type" },
+                    Key = { icon = kind_icons.Keyword, hl = "Type" },
+                    Null = { icon = "NULL", hl = "Type" },
+                    EnumMember = { icon = kind_icons.EnumMember, hl = "Identifier" },
+                    Struct = { icon = kind_icons.Struct, hl = "Structure" },
+                    Event = { icon = kind_icons.Event, hl = "Type" },
+                    Operator = { icon = kind_icons.Operator, hl = "Identifier" },
+                    TypeParameter = { icon = kind_icons.TypeParameter, hl = "Identifier" },
+                    Component = { icon = kind_icons.c, hl = "Function" },
+                    Fragment = { icon = kind_icons.Snippet, hl = "Constant" },
+                    TypeAlias = { icon = kind_icons.Class, hl = "Type" },
+                    Parameter = { icon = kind_icons.Variable, hl = "Identifier" },
+                    StaticMethod = { icon = kind_icons.Method, hl = "Function" },
+                    Macro = { icon = " ", hl = "Function" },
+                },
+            },
+        })
+    end,
 }
