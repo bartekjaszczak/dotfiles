@@ -10,19 +10,19 @@ return {
             build = function()
                 pcall(vim.cmd, "MasonUpdate")
             end,
-        }, -- optional
+        },                                       -- optional
         { "williamboman/mason-lspconfig.nvim" }, -- optional
 
         -- autocompletion
-        { "hrsh7th/nvim-cmp" }, -- required
-        { "hrsh7th/cmp-nvim-lsp" }, -- required
-        { "hrsh7th/cmp-buffer" }, -- optional
-        { "hrsh7th/cmp-path" }, -- optional
+        { "hrsh7th/nvim-cmp" },         -- required
+        { "hrsh7th/cmp-nvim-lsp" },     -- required
+        { "hrsh7th/cmp-buffer" },       -- optional
+        { "hrsh7th/cmp-path" },         -- optional
         { "saadparwaiz1/cmp_luasnip" }, -- optional
-        { "hrsh7th/cmp-nvim-lua" }, -- optional
+        { "hrsh7th/cmp-nvim-lua" },     -- optional
 
         -- snippets
-        { "l3mon4d3/luasnip" }, -- required
+        { "l3mon4d3/luasnip" },             -- required
         { "rafamadriz/friendly-snippets" }, -- optional
     },
 
@@ -40,8 +40,8 @@ return {
                     "gi",
                     "gd",
                     "go",
-                    "<F4>"
-                }
+                    "<F4>",
+                },
             })
             require("lsp_signature").on_attach()
         end
@@ -49,7 +49,7 @@ return {
         lsp_zero.extend_lspconfig({
             lsp_attach = lsp_attach,
             sign_text = true,
-            capabilities = require("cmp_nvim_lsp").default_capabilities()
+            capabilities = require("cmp_nvim_lsp").default_capabilities(),
         })
 
         -----------------------------------------------------------------------
@@ -57,6 +57,7 @@ return {
         -----------------------------------------------------------------------
 
         local lspconfig = require("lspconfig")
+
 
         -------- Lua
         lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
@@ -133,6 +134,14 @@ return {
         lspconfig.marksman.setup({})
 
 
+        --------- Borders around hover and signature help floating windows
+        vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+            border = "rounded",
+        })
+        vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+            border = "rounded",
+        })
+
         -----------------------------------------------------------------------
         --- cmp setup ---------------------------------------------------------
         -----------------------------------------------------------------------
@@ -141,10 +150,10 @@ return {
             local line, col = unpack(vim.api.nvim_win_get_cursor(0))
             return col ~= 0
                 and vim.api
-                        .nvim_buf_get_lines(0, line - 1, line, true)[1]
-                        :sub(col, col)
-                        :match("%s")
-                    == nil
+                .nvim_buf_get_lines(0, line - 1, line, true)[1]
+                :sub(col, col)
+                :match("%s")
+                == nil
         end
 
         local kind_icons = {
@@ -193,8 +202,8 @@ return {
                         cmp.select_next_item()
                     elseif luasnip.expand_or_jumpable() then
                         luasnip.expand_or_jump()
-                    -- elseif has_words_before() then
-                    --     cmp.complete()
+                        -- elseif has_words_before() then
+                        --     cmp.complete()
                     else
                         fallback()
                     end
@@ -218,14 +227,14 @@ return {
                     else
                         fallback()
                     end
-                end, {"i", "s"})
+                end, { "i", "s" }),
             }),
             sources = cmp.config.sources({
                 { name = "nvim_lsp" },
                 { name = "luasnip", keyword_length = 2 },
                 { name = "path" },
                 { name = "nvim_lua" },
-                { name = "buffer", keyword_length = 3 },
+                { name = "buffer",  keyword_length = 3 },
             }),
             formatting = {
                 fields = { "menu", "kind", "abbr" },
@@ -265,7 +274,7 @@ return {
             window = {
                 documentation = cmp.config.window.bordered(),
                 completion = cmp.config.window.bordered(),
-            }
+            },
         })
     end,
 }
