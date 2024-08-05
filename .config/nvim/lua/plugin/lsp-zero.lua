@@ -40,6 +40,7 @@ return {
                     "gi",
                     "gd",
                     "go",
+                    "<F4>"
                 }
             })
             require("lsp_signature").on_attach()
