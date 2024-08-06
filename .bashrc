@@ -16,6 +16,7 @@ alias free='free -m'
 alias pacman='sudo pacman'
 alias ..='cd ..'
 alias mkdir='mkdir -pv'
+alias todo='zk edit -m todo'
 
 # Shell options
 shopt -s checkwinsize
