@@ -14,3 +14,7 @@
 	sort = -committerdate
 [gpg]
 	format = ssh
+[color]
+	ui = true
+[merge]
+	conflictstyle = diff3
