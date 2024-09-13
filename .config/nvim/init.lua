@@ -1,1 +1,1 @@
-require("prtc")
+require("config")
