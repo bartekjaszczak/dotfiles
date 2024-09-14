@@ -158,5 +158,6 @@ configuration {
       fallback-icon: "application-x-addon";
   }
 }
-//@theme "/usr/share/rofi/themes/gruvbox-dark-soft.rasi"
-@theme "/usr/share/rofi/themes/arthur.rasi"
+// @theme "/usr/share/rofi/themes/gruvbox-dark-soft.rasi"
+// @theme "/usr/share/rofi/themes/arthur.rasi"
+@theme "~/.config/rofi/arthur-custom.rasi"
