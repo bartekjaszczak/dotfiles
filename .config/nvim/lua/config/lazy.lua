@@ -16,6 +16,6 @@ require("lazy").setup("plugin", {
         enabled = false,
     },
     dev = {
-        path = "/home/bartek/dev/",
+        path = "/home/btj/dev/",
     }
 })
