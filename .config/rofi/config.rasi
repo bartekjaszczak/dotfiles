@@ -1,6 +1,6 @@
 configuration {
 /*	modes: "drun,run,filebrowser,window";*/
-	font: "RobotoMono Nerd Font Medium 13";
+	font: "CaskaydiaMono Nerd Font Medium 13";
 /*	location: 0;*/
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/
@@ -158,4 +158,5 @@ configuration {
       fallback-icon: "application-x-addon";
   }
 }
-@theme "/usr/share/rofi/themes/gruvbox-dark-soft.rasi"
+//@theme "/usr/share/rofi/themes/gruvbox-dark-soft.rasi"
+@theme "/usr/share/rofi/themes/arthur.rasi"
