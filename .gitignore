@@ -1,9 +1,6 @@
 # .gitignore for dotfiles repo
 .dotfiles
 
-# tmux-specific
-.config/tmux/plugins
-
 # nvim-specific
 .config/nvim/lazy-lock.json
 .config/nvim/spell/*
