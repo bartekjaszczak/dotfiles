@@ -27,7 +27,6 @@ HISTSIZE=2000
 HISTFILESIZE=20000
 PS1='[\u@\h \W]\$ '
 
-set -o vi
 bind "set completion-ignore-case on"
 
 # Default editor
