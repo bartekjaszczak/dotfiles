@@ -16,6 +16,14 @@ require("lazy").setup("plugin", {
         enabled = false,
     },
     dev = {
-        path = "/home/btj/dev/",
+        path = "~/dev/",
+    },
+    performance = {
+        rtp = {
+            disabled_plugins = {
+                "netrw",
+                "netrwPlugin"
+            }
+        }
     }
 })
