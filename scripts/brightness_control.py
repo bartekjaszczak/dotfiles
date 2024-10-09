@@ -105,6 +105,10 @@ def unlock_brightness_control():
 def is_brightness_control_locked():
     return os.path.exists(BRIGHTNESS_LOCK_FILE_PATH)
 
+def notify(brightness):
+    subprocess.run(['notify-send', 'Brightness Control', f'Brightness set to {brightness}%', '-h', f'int:value:{brightness}', '-r', '1000'])
+
+
 def main():
     if is_brightness_control_locked():
         for i in range(300):
@@ -113,11 +117,12 @@ def main():
                 break
         else:
             return
-        
+
     lock_brightness_control()
     brightness = get_current_brightness()
     monitor_ids = get_monitor_ids()
     new_brightness = determine_new_brightness(brightness)
+    notify(new_brightness)
     update_brightness(new_brightness, monitor_ids)
     write_brightness_settings(new_brightness)
     write_tmp_values(monitor_ids)
@@ -125,4 +130,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
