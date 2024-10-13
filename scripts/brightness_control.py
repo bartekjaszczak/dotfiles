@@ -22,16 +22,17 @@ import sys
 import subprocess
 import os
 
-LAST_UPDATED_TIME_THRESHOLD = 60 # How much seconds have to pass before the script will re-read the monitor IDs
-DEFAULT_BRIGHTNESS = 100 # Percent
-TIMEOUT = 30 # How long the script will wait for previous instances to finish in seconds
+LAST_UPDATED_TIME_THRESHOLD = 60  # How much seconds have to pass before the script will re-read the monitor IDs
+DEFAULT_BRIGHTNESS = 100  # Percent
+TIMEOUT = 30  # How long the script will wait for previous instances to finish in seconds
 
 LAST_UPDATED_INCORRECT = 0
 DEFAULT_MONITOR_IDS = [1]
 
-BRIGHTNESS_TMP_FILE_PATH = '/tmp/brightness_control_temp' # Stores the last updated time and monitor IDs
-BRIGHTNESS_LOCK_FILE_PATH = '/tmp/brightness_control_lock' # Locks the brightness control to prevent multiple instances
-BRIGHTNESS_VALUE_FILE_PATH = os.path.expanduser('~/.cache/brightness_control_value') # Stores the current brightness value
+BRIGHTNESS_TMP_FILE_PATH = '/tmp/brightness_control_temp'  # Stores the last updated time and monitor IDs
+BRIGHTNESS_LOCK_FILE_PATH = '/tmp/brightness_control_lock'  # Locks the brightness control to prevent multiple instances
+BRIGHTNESS_VALUE_FILE_PATH = os.path.expanduser('~/.cache/brightness_control_value')  # Stores the current brightness value
+
 
 def get_current_brightness():
     try:
@@ -40,6 +41,7 @@ def get_current_brightness():
     except:
         return DEFAULT_BRIGHTNESS
 
+
 def get_tmp_values():
     try:
         with open(BRIGHTNESS_TMP_FILE_PATH, 'r') as file:
@@ -47,6 +49,7 @@ def get_tmp_values():
             return float(values[0]), list(map(int, values[1:]))
     except:
         return LAST_UPDATED_INCORRECT, DEFAULT_MONITOR_IDS
+
 
 def read_monitor_ids():
     result = subprocess.run(['ddcutil', 'detect'], stdout=subprocess.PIPE, text=True)
@@ -57,11 +60,13 @@ def read_monitor_ids():
     except:
         return DEFAULT_MONITOR_IDS
 
+
 def get_monitor_ids():
     last_updated_time, monitor_ids = get_tmp_values()
     if time.time() - last_updated_time > LAST_UPDATED_TIME_THRESHOLD:
         monitor_ids = read_monitor_ids()
     return monitor_ids
+
 
 def determine_new_brightness(current_brightness):
     if len(sys.argv) == 1:
@@ -82,31 +87,45 @@ def determine_new_brightness(current_brightness):
         except:
             return current_brightness
 
+
 def update_brightness(new_brightness, monitor_ids):
     for monitor_id in monitor_ids:
         subprocess.run(['ddcutil', 'setvcp', '10', str(new_brightness), '--display', str(monitor_id)])
+
 
 def write_brightness_settings(brightness):
     os.makedirs(os.path.dirname(BRIGHTNESS_VALUE_FILE_PATH), exist_ok=True)
     with open(BRIGHTNESS_VALUE_FILE_PATH, 'w') as file:
         file.write(str(brightness))
 
+
 def write_tmp_values(monitor_ids):
     with open(BRIGHTNESS_TMP_FILE_PATH, 'w') as file:
         file.write(str(time.time()) + ' ' + ' '.join(map(str, monitor_ids)))
+
 
 def lock_brightness_control():
     with open(BRIGHTNESS_LOCK_FILE_PATH, 'w') as file:
         file.write('')
 
+
 def unlock_brightness_control():
     os.remove(BRIGHTNESS_LOCK_FILE_PATH)
+
 
 def is_brightness_control_locked():
     return os.path.exists(BRIGHTNESS_LOCK_FILE_PATH)
 
+
 def notify(brightness):
-    subprocess.run(['notify-send', 'Brightness Control', f'Brightness set to {brightness}%', '-h', f'int:value:{brightness}', '-r', '1000'])
+    if brightness <= 50:
+        subprocess.run(['dunstify', '-a', 'brightness_control', '-u', 'low', '-i', 'brightness-low',
+                        '-h', 'string:x-dunst-stack-tag:brightness_control',
+                        '-h', 'int:value:' + str(brightness), 'Brightness: ' + str(brightness) + '%'])
+    else:
+        subprocess.run(['dunstify', '-a', 'brightness_control', '-u', 'low', '-i', 'brightness-high',
+                        '-h', 'string:x-dunst-stack-tag:brightness_control',
+                        '-h', 'int:value:' + str(brightness), 'Brightness: ' + str(brightness) + '%'])
 
 
 def main():
@@ -127,6 +146,7 @@ def main():
     write_brightness_settings(new_brightness)
     write_tmp_values(monitor_ids)
     unlock_brightness_control()
+
 
 if __name__ == '__main__':
     main()
