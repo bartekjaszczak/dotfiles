@@ -2,13 +2,13 @@
  * ROFI Color theme
  * User: Qball
  * Copyright: Dave Davenport
- * Colours changed to distinct colour scheme (https://gitlab.com/bartekjaszczak/distinct-nvim/) by Bartek Jaszczak
+ * Colours changed to luma colour scheme (https://gitlab.com/bartekjaszczak/luma-nvim/) by Bartek Jaszczak
  */
 
 * {
-    foreground:  #e6e5da;
-    tforeground:  #e6e5dadd;
-    backlight:   #fded30dd;
+    foreground:  #e9e5dc;
+    tforeground:  #e9e5dcdd;
+    backlight:   #c8bc00dd;
     background-color:  transparent;
     dark: #1a1917;
     tdark: #1a1917dd;
@@ -17,20 +17,20 @@
     tlightblack:  #403f39cc;
     //
     // Red
-    red:         #ffffff;
-    lightred:    #ffffff;
+    red:         #ca4f3c;
+    lightred:    #ff9279;
     //
     // Green
-    green:       #75bc1f;
-    lightgreen:  #aed17d;
+    green:       #2f6c00;
+    lightgreen:  #65a02d;
     //
     // Yellow
-    yellow:      #fded30;
-    lightyellow:     #f2e985;
+    yellow:      #7f7b00;
+    lightyellow:     #c8bc00;
     //
     // Blue
-    blue:      #219fe3;
-    lightblue:     #84c2df;
+    blue:      #147db9;
+    lightblue:     #72bfff;
     //
     // Bold, Italic, Underline
     highlight:     underline bold #ffffff;
@@ -67,7 +67,7 @@ message {
     color: @black;
 }
 inputbar {
-    color: @yellow;
+    color: @lightyellow;
     padding: 11px;
     background-color: @tlightblack;
     border: 2px 2px 2px 2px;
@@ -106,7 +106,7 @@ element-text {
 }
 element selected.normal {
     text-color: @dark;
-    background-color: @yellow;
+    background-color: @lightyellow;
 }
 element normal active {
     foreground: @lightblue;
@@ -164,8 +164,8 @@ button selected normal {
 }
 error-message {
     expand: true;
-    background-color: red;
-    border-color: darkred;
+    background-color: @red;
+    border-color: @lightred;
     border: 2px;
     padding: 1em;
 }
