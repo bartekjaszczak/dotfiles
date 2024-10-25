@@ -3,6 +3,7 @@
 # -d <value> | --decrease <value>: decrease brightness by <value> percent
 # -i <value> | --increase <value>: increase brightness by <value> percent
 # -s <value> | --set <value>: set brightness to <value> percent
+# -p         | --previous: restore previous brighthess (can be used to automatically dim the screen and restore on mouse move)
 
 # You can run this script without arguments at startup to restore the brightness settings.
 # You can also bind this script to a keyboard shortcut to increase/decrease the brightness by, for example, 10 percent.
@@ -31,13 +32,25 @@ DEFAULT_MONITOR_IDS = [1]
 
 BRIGHTNESS_TMP_FILE_PATH = '/tmp/brightness_control_temp'  # Stores the last updated time and monitor IDs
 BRIGHTNESS_LOCK_FILE_PATH = '/tmp/brightness_control_lock'  # Locks the brightness control to prevent multiple instances
-BRIGHTNESS_VALUE_FILE_PATH = os.path.expanduser('~/.cache/brightness_control_value')  # Stores the current brightness value
+BRIGHTNESS_VALUE_FILE_PATH = os.path.expanduser('~/.cache/brightness_control_value')  # Stores the current and previous brightness value
 
 
 def get_current_brightness():
     try:
         with open(BRIGHTNESS_VALUE_FILE_PATH, 'r') as file:
-            return max(0, min(100, int(file.read())))
+            values = file.read().split()
+            current = int(values[0])
+            return max(0, min(100, current))
+    except:
+        return DEFAULT_BRIGHTNESS
+
+
+def get_previous_brightness():
+    try:
+        with open(BRIGHTNESS_VALUE_FILE_PATH, 'r') as file:
+            values = file.read().split()
+            previous = int(values[1])
+            return max(0, min(100, previous))
     except:
         return DEFAULT_BRIGHTNESS
 
@@ -86,6 +99,8 @@ def determine_new_brightness(current_brightness):
             return max(0, min(100, int(sys.argv[2])))
         except:
             return current_brightness
+    elif sys.argv[1] in ['-p', '--previous']:
+        return get_previous_brightness()
 
 
 def update_brightness(new_brightness, monitor_ids):
@@ -93,10 +108,10 @@ def update_brightness(new_brightness, monitor_ids):
         subprocess.run(['ddcutil', 'setvcp', '10', str(new_brightness), '--display', str(monitor_id)])
 
 
-def write_brightness_settings(brightness):
+def write_brightness_settings(current, previous):
     os.makedirs(os.path.dirname(BRIGHTNESS_VALUE_FILE_PATH), exist_ok=True)
     with open(BRIGHTNESS_VALUE_FILE_PATH, 'w') as file:
-        file.write(str(brightness))
+        file.write(str(current) + ' ' + str(previous))
 
 
 def write_tmp_values(monitor_ids):
@@ -129,23 +144,25 @@ def notify(brightness):
 
 
 def main():
-    if is_brightness_control_locked():
-        for i in range(300):
-            time.sleep(0.2)
-            if not is_brightness_control_locked():
-                break
-        else:
-            return
+    try:
+        if is_brightness_control_locked():
+            for i in range(300):
+                time.sleep(0.2)
+                if not is_brightness_control_locked():
+                    break
+            else:
+                return
 
-    lock_brightness_control()
-    brightness = get_current_brightness()
-    monitor_ids = get_monitor_ids()
-    new_brightness = determine_new_brightness(brightness)
-    notify(new_brightness)
-    update_brightness(new_brightness, monitor_ids)
-    write_brightness_settings(new_brightness)
-    write_tmp_values(monitor_ids)
-    unlock_brightness_control()
+        lock_brightness_control()
+        brightness = get_current_brightness()
+        monitor_ids = get_monitor_ids()
+        new_brightness = determine_new_brightness(brightness)
+        notify(new_brightness)
+        update_brightness(new_brightness, monitor_ids)
+        write_brightness_settings(new_brightness, brightness)
+        write_tmp_values(monitor_ids)
+    finally:
+        unlock_brightness_control()
 
 
 if __name__ == '__main__':
