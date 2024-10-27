@@ -1,0 +1,9 @@
+[default]
+duration = "1h"
+transition-time = 1500
+
+[DP-1]
+path = "/home/btj/Pictures/wallpapers/5120x1440"
+
+[DP-2]
+path = "/home/btj/Pictures/wallpapers/3840x2160"
