@@ -1,5 +1,5 @@
 [default]
-duration = "1h"
+duration = "15m"
 transition-time = 1500
 
 [DP-1]
