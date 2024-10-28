@@ -13,6 +13,16 @@
     "custom/weather",
   ],
 
+  "cpu": {
+    "format": "{usage}%  ",
+    "interval": 5,
+    "tooltip": true,
+  },
+  "memory": {
+    "format": "{}%  ",
+    "interval": 5,
+    "tooltip": true,
+  },
   "hyprland/workspaces": {
     "show-special": true,
   },
@@ -27,7 +37,7 @@
     "status-icons": {
       "paused": " ",
     },
-    "max-length": 80,
+    "max-length": 60,
   },
 
   "hyprland/window": {
@@ -56,16 +66,6 @@
         "tooltip-icon-size": 24,
       },
     ],
-  },
-  "cpu": {
-    "format": "{usage}%  ",
-    "interval": 5,
-    "tooltip": true,
-  },
-  "memory": {
-    "format": "{}%  ",
-    "interval": 5,
-    "tooltip": true,
   },
   "pulseaudio": {
     "scroll-step": 5,
