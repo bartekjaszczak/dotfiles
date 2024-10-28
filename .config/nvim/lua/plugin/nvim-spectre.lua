@@ -26,10 +26,17 @@ return {
                 desc = "Search on current file",
             }
         )
+        require("spectre").setup({
+            highlight = {
+                ui = "WinSeparator",
+                filename = "FloatTitle",
+                filedirectory = "Directory",
+                search = "DiffDelete",
+                border = "FloatBorder",
+                replace = "DiffAdd",
+            },
+            is_insert_mode = true,
+        })
 
-        -- Reload colorscheme after Spectre is loaded as Spectre overrides it
-        local colorscheme = vim.g.colors_name
-
-        vim.cmd("colorscheme " .. colorscheme)
     end,
 }

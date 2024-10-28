@@ -8,7 +8,7 @@ return {
 
     config = function()
         require("barbecue").setup({
-            theme = "distinct",
+            theme = "luma",
         })
     end,
 }
