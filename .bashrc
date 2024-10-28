@@ -3,6 +3,7 @@
 
 # Exports
 export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/bin:$PATH
 
 # Dotfiles alias
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -22,6 +23,7 @@ alias todo='zk edit -m todo'
 shopt -s checkwinsize
 shopt -s expand_aliases
 shopt -s histappend
+shopt -s globstar # Enable ** for recursive globbing
 
 HISTSIZE=2000
 HISTFILESIZE=20000
