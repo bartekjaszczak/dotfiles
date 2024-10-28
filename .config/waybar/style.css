@@ -72,6 +72,10 @@ window#waybar {
   padding-right: 32px;
   border-color: #168945;
 }
+window#waybar.empty #window{
+  background-color: transparent;
+  border: none;
+}
 
 /* ---------------- RIGHT ---------------- */
 
