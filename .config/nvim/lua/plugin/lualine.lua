@@ -14,7 +14,7 @@ return {
                 "mason",
             },
             options = {
-                theme = "luma",
+                theme = "finale",
             }
         })
     end,
