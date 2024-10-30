@@ -15,6 +15,7 @@
   background-color: #0d0700;
   border: 3px solid;
   opacity: 0.8;
+  transition: 0.3s ease-out;
 }
 
 /* ---------------- LEFT ---------------- */
@@ -22,14 +23,28 @@
   margin-left: 6px;
   border-color: #d67569;
 }
+#cpu:hover {
+  border-color: #fb4934;
+  transition: 0.3s ease-out;
+  opacity: 1.0;
+}
 
 #memory {
   border-color: #ffbd7a;
 }
+#memory:hover {
+  border-color: #ff8800;
+  transition: 0.3s ease-out;
+  opacity: 1.0;
+}
 
 #workspaces {
-  transition: none;
   border-color: #f2de77;
+}
+#workspaces:hover {
+  border-color: #ffd500;
+  transition: 0.3s ease-out;
+  opacity: 1.0;
 }
 #workspaces button {
   background-color: transparent;
@@ -38,28 +53,39 @@
   padding-right: 20px;
   margin-top: 2px;
   margin-bottom: 2px;
+  transition: 0.3s ease-out;
 }
 #workspaces button.visible {
   font-weight: bold;
   background-color: #ffd500;
   color: #0d0700;
   opacity: 1;
+  transition: 0.3s ease-out;
 }
 #workspaces button:hover {
   background-color: #219fe3;
+  transition: 0.3s ease-out;
 }
 #workspaces button.urgent {
   background-color: #fb4934;
+  transition: 0.3s ease-out;
 }
 
 #mpris {
   border-color: #9bb36d;
 }
+#mpris:hover {
+  border-color: #83b324;
+  transition: 0.3s ease-out;
+  opacity: 1.0;
+}
 #mpris.paused {
   color: #625e56;
+  transition: 0.3s ease-out;
 }
 #mpris.stopped {
   color: #625e56;
+  transition: 0.3s ease-out;
 }
 
 /* ---------------- CENTRE ---------------- */
@@ -72,7 +98,12 @@ window#waybar {
   padding-right: 32px;
   border-color: #6ebd87;
 }
-window#waybar.empty #window{
+#window:hover {
+  border-color: #08bd40;
+  transition: 0.3s ease-out;
+  opacity: 1.0;
+}
+window#waybar.empty #window {
   background-color: transparent;
   border: none;
 }
@@ -87,24 +118,51 @@ window#waybar.empty #window{
   background-color: #0d0700;
   border: 3px solid #5fbdb2;
   opacity: 0.8;
+  transition: 0.3s ease-out;
+}
+#privacy-item:hover {
+  border-color: #17bda9;
+  transition: 0.3s ease-out;
+  opacity: 1.0;
 }
 
 #pulseaudio {
   border-color: #78bde3;
 }
+#pulseaudio:hover {
+  border-color: #219fe3;
+  transition: 0.3s ease-out;
+  opacity: 1.0;
+}
 #pulseaudio.muted {
   color: #625e56;
+  transition: 0.3s ease-out;
 }
 
 #tray {
   border-color: #c2a1ff;
 }
+#tray:hover {
+  border-color: #9a64ff;
+  transition: 0.3s ease-out;
+  opacity: 1.0;
+}
 
 #clock {
   border-color: #e197e8;
+}
+#clock:hover {
+  border-color: #db4ae8;
+  transition: 0.3s ease-out;
+  opacity: 1.0;
 }
 
 #custom-weather {
   border-color: #f79cc9;
   margin-right: 6px;
+}
+#custom-weather:hover {
+  border-color: #f752a4;
+  transition: 0.3s ease-out;
+  opacity: 1.0;
 }
