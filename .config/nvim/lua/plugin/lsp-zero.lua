@@ -63,7 +63,6 @@ return {
 
         local lspconfig = require("lspconfig")
 
-
         -------- Lua
         lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
 
@@ -122,9 +121,15 @@ return {
                             enable = true,
                         },
                     },
-                    checkOnSave = {
+                    check = {
                         command = "clippy",
-                    }
+                        extraArgs = {
+                            "--",
+                            "-Dclippy::all",
+                            "-Dclippy::cargo",
+                            "-Dclippy::pedantic",
+                        },
+                    },
                 },
             },
         })
@@ -141,14 +146,14 @@ return {
         --------- Markdown
         lspconfig.marksman.setup({})
 
-
         --------- Borders around hover and signature help floating windows
         vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
             border = "rounded",
         })
-        vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-            border = "rounded",
-        })
+        vim.lsp.handlers["textDocument/signatureHelp"] =
+            vim.lsp.with(vim.lsp.handlers.signature_help, {
+                border = "rounded",
+            })
 
         -----------------------------------------------------------------------
         --- cmp setup ---------------------------------------------------------
