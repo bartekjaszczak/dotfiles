@@ -122,6 +122,9 @@ return {
                             enable = true,
                         },
                     },
+                    checkOnSave = {
+                        command = "clippy",
+                    }
                 },
             },
         })
