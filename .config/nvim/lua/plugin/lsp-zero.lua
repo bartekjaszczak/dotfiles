@@ -10,19 +10,19 @@ return {
             build = function()
                 pcall(vim.cmd, "MasonUpdate")
             end,
-        }, -- optional
+        },                                       -- optional
         { "williamboman/mason-lspconfig.nvim" }, -- optional
 
         -- autocompletion
-        { "hrsh7th/nvim-cmp" }, -- required
-        { "hrsh7th/cmp-nvim-lsp" }, -- required
-        { "hrsh7th/cmp-buffer" }, -- optional
-        { "hrsh7th/cmp-path" }, -- optional
+        { "hrsh7th/nvim-cmp" },         -- required
+        { "hrsh7th/cmp-nvim-lsp" },     -- required
+        { "hrsh7th/cmp-buffer" },       -- optional
+        { "hrsh7th/cmp-path" },         -- optional
         { "saadparwaiz1/cmp_luasnip" }, -- optional
-        { "hrsh7th/cmp-nvim-lua" }, -- optional
+        { "hrsh7th/cmp-nvim-lua" },     -- optional
 
         -- snippets
-        { "l3mon4d3/luasnip" }, -- required
+        { "l3mon4d3/luasnip" },             -- required
         { "rafamadriz/friendly-snippets" }, -- optional
     },
 
@@ -164,6 +164,12 @@ return {
                 border = "rounded",
             })
 
+        vim.diagnostic.config({
+            float = {
+                border = "rounded",
+            },
+        })
+
         -----------------------------------------------------------------------
         --- cmp setup ---------------------------------------------------------
         -----------------------------------------------------------------------
@@ -172,10 +178,10 @@ return {
             local line, col = unpack(vim.api.nvim_win_get_cursor(0))
             return col ~= 0
                 and vim.api
-                        .nvim_buf_get_lines(0, line - 1, line, true)[1]
-                        :sub(col, col)
-                        :match("%s")
-                    == nil
+                .nvim_buf_get_lines(0, line - 1, line, true)[1]
+                :sub(col, col)
+                :match("%s")
+                == nil
         end
 
         local kind_icons = {
@@ -258,7 +264,7 @@ return {
                 { name = "luasnip" },
                 { name = "path" },
                 { name = "nvim_lua" },
-                { name = "buffer", keyword_length = 3 },
+                { name = "buffer",  keyword_length = 3 },
             }),
             formatting = {
                 fields = { "menu", "kind", "abbr" },
