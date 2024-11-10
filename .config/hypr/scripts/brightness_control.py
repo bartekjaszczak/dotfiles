@@ -146,7 +146,7 @@ def notify(brightness):
 def main():
     try:
         if is_brightness_control_locked():
-            for i in range(300):
+            for _ in range(300):
                 time.sleep(0.2)
                 if not is_brightness_control_locked():
                     break
