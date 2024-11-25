@@ -46,6 +46,8 @@ return {
                     "gi",
                     "gd",
                     "go",
+                    -- Signature opens automatically
+                    "gs",
                     -- remapped below
                     "<F2>",
                     "<F3>",
@@ -68,8 +70,8 @@ return {
                 local opts = { buffer = event.buf }
 
                 vim.keymap.set("n", "<C-q>", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
-                vim.keymap.set("n", "<leader>cr", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
-                vim.keymap.set("n", "<leader>cf", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
+                vim.keymap.set("n", "<leader>cr", "<cmd> lua vim.lsp.buf.rename()<cr>", opts)
+                vim.keymap.set("n", "<leader>cf", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
             end,
         })
 
