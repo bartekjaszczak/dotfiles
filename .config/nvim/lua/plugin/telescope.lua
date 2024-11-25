@@ -5,40 +5,39 @@ return {
 
     lazy = true,
     keys = {
-        "<leader>e",
+        "<leader>fb",
         "<leader>ff",
         "<leader>fg",
         "<leader>fr",
 
         "<leader>fh",
-        "<leader>q",
+        "<leader>fq",
         "<leader>fw",
         "<leader>fl",
 
-        "<leader>fd",
-        "<leader>fs",
-        "<leader>fS",
+        "<leader>cd",
+        "<leader>cs",
         "gr",
         "gi",
         "gd",
         "go",
 
         "<leader>fp",
-        "<leader>ft",
+        "<leader>ct",
     },
 
     config = function()
         local builtin = require("telescope.builtin")
 
         -- Files
-        vim.keymap.set("n", "<leader>e", builtin.buffers, { noremap = true, silent = true })
+        vim.keymap.set("n", "<leader>fb", builtin.buffers, { noremap = true, silent = true })
         vim.keymap.set("n", "<leader>ff", builtin.find_files, { noremap = true, silent = true })
         vim.keymap.set("n", "<leader>fg", builtin.git_files, { noremap = true, silent = true })
         vim.keymap.set("n", "<leader>fr", builtin.oldfiles, { noremap = true, silent = true })
 
         -- Search
         vim.keymap.set("n", "<leader>fh", builtin.search_history, { noremap = true, silent = true })
-        vim.keymap.set("n", "<leader>q", builtin.quickfix, { noremap = true, silent = true })
+        vim.keymap.set("n", "<leader>fq", builtin.quickfix, { noremap = true, silent = true })
         vim.keymap.set(
             { "x", "n" },
             "<leader>fw",
@@ -48,12 +47,12 @@ return {
         vim.keymap.set("n", "<leader>fl", builtin.live_grep, { noremap = true, silent = true })
 
         -- LSP
-        vim.keymap.set("n", "<leader>fd", function()
+        vim.keymap.set("n", "<leader>cd", function()
             builtin.diagnostics({ bufnr = 0 })
         end, { noremap = true, silent = true })
         vim.keymap.set(
             "n",
-            "<leader>fs",
+            "<leader>cs",
             builtin.lsp_workspace_symbols,
             { noremap = true, silent = true }
         )
@@ -64,7 +63,7 @@ return {
 
         -- Other
         vim.keymap.set("n", "<leader>fp", builtin.resume, { noremap = true, silent = true }) -- Previous search
-        vim.keymap.set("n", "<leader>ft", builtin.treesitter, { noremap = true, silent = true })
+        vim.keymap.set("n", "<leader>ct", builtin.treesitter, { noremap = true, silent = true })
 
         require("telescope").setup({
             defaults = {
@@ -73,8 +72,8 @@ return {
                     i = {
                         ["<C-j>"] = require("telescope.actions").move_selection_next,
                         ["<C-k>"] = require("telescope.actions").move_selection_previous,
-                        -- ["<C-q>"] = require("telescope.actions").smart_send_to_qflist
-                        --     + require("telescope.actions").open_qflist,
+                        ["<C-q>"] = require("telescope.actions").smart_send_to_qflist
+                            + require("telescope.actions").open_qflist,
                         ["<Esc>"] = require("telescope.actions").close,
 
                         ["<C-s>"] = require("telescope.actions").select_vertical,

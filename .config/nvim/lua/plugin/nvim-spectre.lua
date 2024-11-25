@@ -1,10 +1,10 @@
 return {
     "nvim-pack/nvim-spectre",
 
-    keys = { "<leader>R", "<leader>rw", "<leader>rp" },
+    keys = { "<leader>rr", "<leader>rw", "<leader>rf" },
 
     config = function()
-        vim.keymap.set("n", "<leader>R", '<cmd>lua require("spectre").open()<CR>', {
+        vim.keymap.set("n", "<leader>rr", '<cmd>lua require("spectre").open()<CR>', {
             desc = "Open Spectre",
         })
         vim.keymap.set(
@@ -20,7 +20,7 @@ return {
         })
         vim.keymap.set(
             "n",
-            "<leader>rp",
+            "<leader>rf",
             '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>',
             {
                 desc = "Search on current file",
@@ -37,6 +37,5 @@ return {
             },
             is_insert_mode = true,
         })
-
     end,
 }

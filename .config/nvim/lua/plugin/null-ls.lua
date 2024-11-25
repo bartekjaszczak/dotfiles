@@ -6,6 +6,7 @@ return {
 
         null_ls.setup({
             sources = {
+                -- Formatting
                 null_ls.builtins.formatting.stylua,
                 null_ls.builtins.formatting.clang_format,
                 -- null_ls.builtins.formatting.prettier, -- don't need this if we have prettierd

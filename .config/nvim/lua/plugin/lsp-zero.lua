@@ -10,19 +10,19 @@ return {
             build = function()
                 pcall(vim.cmd, "MasonUpdate")
             end,
-        },                                       -- optional
+        }, -- optional
         { "williamboman/mason-lspconfig.nvim" }, -- optional
 
         -- autocompletion
-        { "hrsh7th/nvim-cmp" },         -- required
-        { "hrsh7th/cmp-nvim-lsp" },     -- required
-        { "hrsh7th/cmp-buffer" },       -- optional
-        { "hrsh7th/cmp-path" },         -- optional
+        { "hrsh7th/nvim-cmp" }, -- required
+        { "hrsh7th/cmp-nvim-lsp" }, -- required
+        { "hrsh7th/cmp-buffer" }, -- optional
+        { "hrsh7th/cmp-path" }, -- optional
         { "saadparwaiz1/cmp_luasnip" }, -- optional
-        { "hrsh7th/cmp-nvim-lua" },     -- optional
+        { "hrsh7th/cmp-nvim-lua" }, -- optional
 
         -- snippets
-        { "l3mon4d3/luasnip" },             -- required
+        { "l3mon4d3/luasnip" }, -- required
         { "rafamadriz/friendly-snippets" }, -- optional
     },
 
@@ -40,11 +40,16 @@ return {
         local lsp_attach = function(client, bufnr)
             lsp_zero.default_keymaps({
                 buffer = bufnr,
-                exclude = { -- These are provided via Telescope
+                exclude = {
+                    -- These are provided via Telescope
                     "gr",
                     "gi",
                     "gd",
                     "go",
+                    -- remapped below
+                    "<F2>",
+                    "<F3>",
+                    -- code-actions provided by another plugin
                     "<F4>",
                 },
             })
@@ -63,6 +68,8 @@ return {
                 local opts = { buffer = event.buf }
 
                 vim.keymap.set("n", "<C-q>", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
+                vim.keymap.set("n", "<leader>cr", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
+                vim.keymap.set("n", "<leader>cf", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
             end,
         })
 
@@ -93,7 +100,7 @@ return {
             on_attach = function(client, bufnr)
                 local opts = { buffer = bufnr, remap = false }
 
-                vim.keymap.set("n", "<F8>", "<cmd>ClangdSwitchSourceHeader<CR>", opts)
+                vim.keymap.set("n", "<leader>ch", "<cmd>ClangdSwitchSourceHeader<CR>", opts)
             end,
             cmd = {
                 "clangd",
@@ -178,10 +185,10 @@ return {
             local line, col = unpack(vim.api.nvim_win_get_cursor(0))
             return col ~= 0
                 and vim.api
-                .nvim_buf_get_lines(0, line - 1, line, true)[1]
-                :sub(col, col)
-                :match("%s")
-                == nil
+                        .nvim_buf_get_lines(0, line - 1, line, true)[1]
+                        :sub(col, col)
+                        :match("%s")
+                    == nil
         end
 
         local kind_icons = {
@@ -264,7 +271,7 @@ return {
                 { name = "luasnip" },
                 { name = "path" },
                 { name = "nvim_lua" },
-                { name = "buffer",  keyword_length = 3 },
+                { name = "buffer", keyword_length = 3 },
             }),
             formatting = {
                 fields = { "menu", "kind", "abbr" },

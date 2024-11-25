@@ -2,11 +2,11 @@ return {
     "danymat/neogen",
 
     cmd = { "Neogen" },
-    keys = { "<leader>cd" },
+    keys = { "<leader>cg" },
 
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
         require("neogen").setup({ snippet_engine = "luasnip" })
-        vim.keymap.set("n", "<leader>cd", vim.cmd.Neogen)
+        vim.keymap.set("n", "<leader>cg", vim.cmd.Neogen)
     end,
 }
