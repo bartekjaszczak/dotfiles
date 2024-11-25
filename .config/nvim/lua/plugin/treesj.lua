@@ -11,7 +11,7 @@ return {
             max_join_length = 200,
         })
 
-        vim.keymap.set("n", "<leader>cs", "<cmd>TSJToggle<CR>")
+        vim.keymap.set("n", "<leader>cs", "<cmd>TSJToggle<CR>", { desc = "Join/split line" })
         -- vim.keymap.set("n", "<leader>bj", "<cmd>TSJJoin<CR>")
         -- vim.keymap.set("n", "<leader>bs", "<cmd>TSJSplit<CR>")
     end,

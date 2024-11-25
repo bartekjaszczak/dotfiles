@@ -67,11 +67,24 @@ return {
         vim.api.nvim_create_autocmd("LspAttach", {
             desc = "LSP actions",
             callback = function(event)
-                local opts = { buffer = event.buf }
-
-                vim.keymap.set("n", "<C-q>", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
-                vim.keymap.set("n", "<leader>cr", "<cmd> lua vim.lsp.buf.rename()<cr>", opts)
-                vim.keymap.set("n", "<leader>cf", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
+                vim.keymap.set(
+                    "n",
+                    "<C-q>",
+                    "<cmd>lua vim.diagnostic.open_float()<cr>",
+                    { buffer = event.buf, desc = "Open diagnostics in floating window" }
+                )
+                vim.keymap.set(
+                    "n",
+                    "<leader>cr",
+                    "<cmd> lua vim.lsp.buf.rename()<cr>",
+                    { buffer = event.buf, desc = "Rename symbol" }
+                )
+                vim.keymap.set(
+                    { "n", "x" },
+                    "<leader>cf",
+                    "<cmd>lua vim.lsp.buf.format({async = true})<cr>",
+                    { buffer = event.buf, desc = "Format code" }
+                )
             end,
         })
 
@@ -100,9 +113,10 @@ return {
             force_setup = true,
             capabilities = capabilities,
             on_attach = function(client, bufnr)
-                local opts = { buffer = bufnr, remap = false }
-
-                vim.keymap.set("n", "<leader>ch", "<cmd>ClangdSwitchSourceHeader<CR>", opts)
+                vim.keymap.set("n", "<leader>ch", "<cmd>ClangdSwitchSourceHeader<CR>", {
+                    buffer = bufnr,
+                    desc = "Switch between source/header",
+                })
             end,
             cmd = {
                 "clangd",

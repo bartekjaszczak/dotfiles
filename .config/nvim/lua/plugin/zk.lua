@@ -5,34 +5,37 @@ return {
             picker = "telescope",
         })
 
-        local opts = { noremap = true, silent = false }
-
         -- Create a new note after asking for its title.
-        vim.api.nvim_set_keymap(
+        vim.keymap.set(
             "n",
             "<leader>zn",
             "<Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>",
-            opts
+            { desc = "Create new note" }
         )
 
         -- Open notes.
-        vim.api.nvim_set_keymap(
+        vim.keymap.set(
             "n",
             "<leader>zo",
             "<Cmd>ZkNotes { sort = { 'modified' } }<CR>",
-            opts
+            { desc = "Open notes" }
         )
         -- Open notes associated with the selected tags.
-        vim.api.nvim_set_keymap("n", "<leader>zt", "<Cmd>ZkTags<CR>", opts)
+        vim.keymap.set("n", "<leader>zt", "<Cmd>ZkTags<CR>", { desc = "Open notes by tags" })
 
         -- Search for the notes matching a given query.
-        vim.api.nvim_set_keymap(
+        vim.keymap.set(
             "n",
             "<leader>zf",
             "<Cmd>ZkNotes { sort = { 'modified' }, match = { vim.fn.input('Search: ') } }<CR>",
-            opts
+            { desc = "Search notes" }
         )
         -- Search for the notes matching the current visual selection.
-        vim.api.nvim_set_keymap("v", "<leader>zf", ":'<,'>ZkMatch<CR>", opts)
+        vim.keymap.set(
+            "v",
+            "<leader>zf",
+            ":'<,'>ZkMatch<CR>",
+            { desc = "Search notes by selection" }
+        )
     end,
 }

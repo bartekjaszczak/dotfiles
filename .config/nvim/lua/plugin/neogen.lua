@@ -7,6 +7,6 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
         require("neogen").setup({ snippet_engine = "luasnip" })
-        vim.keymap.set("n", "<leader>cg", vim.cmd.Neogen)
+        vim.keymap.set("n", "<leader>cg", vim.cmd.Neogen, { desc = "Generate doxygen" })
     end,
 }

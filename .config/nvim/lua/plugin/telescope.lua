@@ -30,40 +30,40 @@ return {
         local builtin = require("telescope.builtin")
 
         -- Files
-        vim.keymap.set("n", "<leader>fb", builtin.buffers, { noremap = true, silent = true })
-        vim.keymap.set("n", "<leader>ff", builtin.find_files, { noremap = true, silent = true })
-        vim.keymap.set("n", "<leader>fg", builtin.git_files, { noremap = true, silent = true })
-        vim.keymap.set("n", "<leader>fr", builtin.oldfiles, { noremap = true, silent = true })
+        vim.keymap.set("n", "<leader>fb", builtin.buffers, { noremap = true, silent = true, desc = "Find buffers"})
+        vim.keymap.set("n", "<leader>ff", builtin.find_files, { noremap = true, silent = true, desc = "Find files"})
+        vim.keymap.set("n", "<leader>fg", builtin.git_files, { noremap = true, silent = true, desc = "Find files (git)"})
+        vim.keymap.set("n", "<leader>fr", builtin.oldfiles, { noremap = true, silent = true, desc = "Recent files"})
 
         -- Search
-        vim.keymap.set("n", "<leader>fh", builtin.search_history, { noremap = true, silent = true })
-        vim.keymap.set("n", "<leader>fq", builtin.quickfix, { noremap = true, silent = true })
+        vim.keymap.set("n", "<leader>fh", builtin.search_history, { noremap = true, silent = true, desc = "Search history"})
+        vim.keymap.set("n", "<leader>fq", builtin.quickfix, { noremap = true, silent = true, desc = "Quickfix list"})
         vim.keymap.set(
             { "x", "n" },
             "<leader>fw",
             builtin.grep_string,
-            { noremap = true, silent = true }
+            { noremap = true, silent = true, desc = "Search word under cursor" }
         )
-        vim.keymap.set("n", "<leader>fl", builtin.live_grep, { noremap = true, silent = true })
+        vim.keymap.set("n", "<leader>fl", builtin.live_grep, { noremap = true, silent = true, desc = "Search for string..."})
 
         -- LSP
         vim.keymap.set("n", "<leader>cd", function()
             builtin.diagnostics({ bufnr = 0 })
-        end, { noremap = true, silent = true })
+        end, { noremap = true, silent = true, desc = "Show diagnostics" })
         vim.keymap.set(
             "n",
             "<leader>cs",
             builtin.lsp_workspace_symbols,
-            { noremap = true, silent = true }
+            { noremap = true, silent = true, desc = "Find workspace symbols" }
         )
-        vim.keymap.set("n", "gr", builtin.lsp_references, { noremap = true, silent = true })
-        vim.keymap.set("n", "gi", builtin.lsp_implementations, { noremap = true, silent = true })
-        vim.keymap.set("n", "gd", builtin.lsp_definitions, { noremap = true, silent = true })
-        vim.keymap.set("n", "go", builtin.lsp_type_definitions, { noremap = true, silent = true })
+        vim.keymap.set("n", "gr", builtin.lsp_references, { noremap = true, silent = true, desc = "Go to references" })
+        vim.keymap.set("n", "gi", builtin.lsp_implementations, { noremap = true, silent = true, desc = "Go to implementation" })
+        vim.keymap.set("n", "gd", builtin.lsp_definitions, { noremap = true, silent = true, desc = "Go to definition" })
+        vim.keymap.set("n", "go", builtin.lsp_type_definitions, { noremap = true, silent = true, desc = "Go to type definition" })
 
         -- Other
-        vim.keymap.set("n", "<leader>fp", builtin.resume, { noremap = true, silent = true }) -- Previous search
-        vim.keymap.set("n", "<leader>ct", builtin.treesitter, { noremap = true, silent = true })
+        vim.keymap.set("n", "<leader>fp", builtin.resume, { noremap = true, silent = true, desc = "Previous search" })
+        vim.keymap.set("n", "<leader>ct", builtin.treesitter, { noremap = true, silent = true, desc = "Treesitter" })
 
         require("telescope").setup({
             defaults = {
