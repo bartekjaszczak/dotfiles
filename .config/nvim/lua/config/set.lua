@@ -2,7 +2,7 @@ vim.opt.guicursor = ""
 
 -- Relative line numbers
 vim.opt.nu = true
-vim.opt.relativenumber = true
+-- vim.opt.relativenumber = true
 
 -- Tab is 4 spaces
 vim.opt.tabstop = 4
@@ -32,7 +32,7 @@ vim.opt.cursorline = true
 vim.opt.termguicolors = true
 
 -- Scroll the buffer to keep cursor vaguely in the center
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 3
 
 -- Show signcolumn
 vim.opt.signcolumn = "yes"
@@ -52,6 +52,13 @@ vim.opt.backspace = "indent,eol,start"
 -- Conceal (used for markdown shenanigans)
 vim.opt.conceallevel = 2
 
+-- Don't wrap in the middle of a word
+vim.opt.linebreak = true
+
+-- Don't show cmdline by default
+vim.opt.cmdheight = 0
+
+
 -- Enabling than will treat '-' as part of a word and select it accordingly
 -- vim.iskeyword:append("-")
 
@@ -68,3 +75,6 @@ vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticS
 vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
 vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint", { text = " ", texthl = "DiagnosticSignHint" })
+
+-- Disable virtual text diagnostics
+vim.diagnostic.config({ virtual_text = false })

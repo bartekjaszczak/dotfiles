@@ -85,16 +85,16 @@ return {
         vim.keymap.set("n", "<leader>cd", function()
             builtin.diagnostics({ bufnr = 0 })
         end, { noremap = true, silent = true, desc = "Show diagnostics" })
-        -- vim.keymap.set(
-        --     "n",
-        --     "<leader>cs",
-        --     builtin.lsp_workspace_symbols,
-        --     { noremap = true, silent = true, desc = "Find workspace symbols" }
-        -- )
+        vim.keymap.set(
+            "n",
+            "<leader>cs",
+            builtin.lsp_workspace_symbols,
+            { noremap = true, silent = true, desc = "Find workspace symbols" }
+        )
         vim.keymap.set(
             "n",
             "gr",
-            builtin.lsp_references,
+            "<cmd>Telescope lsp_references path_display={'smart'}<cr>",
             { noremap = true, silent = true, desc = "Go to references" }
         )
         vim.keymap.set(
