@@ -82,10 +82,12 @@
 #mpris.paused {
   color: #625e56;
   transition: 0.3s ease-out;
+  opacity: 1.0;
 }
 #mpris.stopped {
   color: #625e56;
   transition: 0.3s ease-out;
+  opacity: 1.0;
 }
 
 /* ---------------- CENTRE ---------------- */
@@ -137,6 +139,7 @@ window#waybar.empty #window {
 #pulseaudio.muted {
   color: #625e56;
   transition: 0.3s ease-out;
+  opacity: 1.0;
 }
 
 #tray {
