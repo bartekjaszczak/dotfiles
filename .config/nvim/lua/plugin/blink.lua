@@ -4,9 +4,7 @@ return {
     -- optional: provides snippets for the snippet source
     dependencies = {
         "rafamadriz/friendly-snippets",
-        "saadparwaiz1/cmp_luasnip",
-        "l3mon4d3/luasnip",
-        { "saghen/blink.compat", version = "*", opts = { impersonate_nvim_cmp = true } },
+        { "l3mon4d3/luasnip", version = "v2.*", build = "make install_jsregexp" },
     },
 
     -- use a release tag to download pre-built binaries
@@ -53,21 +51,11 @@ return {
             },
         },
         sources = {
-            completion = {
-                enabled_providers = { "lsp", "path", "snippets", "buffer", "luasnip" },
-            },
-            providers = {
-                luasnip = {
-                    name = "luasnip",
-                    module = "blink.compat.source",
-
-                    score_offset = -3,
-
-                    opts = {
-                        use_show_condition = false,
-                        show_autosnippets = true,
-                    },
-                },
+            default = {
+                "lsp",
+                "path",
+                "luasnip",
+                "buffer",
             },
         },
     },
