@@ -5,6 +5,7 @@ return {
     dependencies = {
         "rafamadriz/friendly-snippets",
         "saadparwaiz1/cmp_luasnip",
+        "l3mon4d3/luasnip",
         { "saghen/blink.compat", version = "*", opts = { impersonate_nvim_cmp = true } },
     },
 
@@ -14,27 +15,40 @@ return {
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
-        keymap = { preset = "enter" },
-        accept = {
-            auto_brackets = {
-                enabled = false,
-            },
+        keymap = {
+            preset = "enter",
         },
-        trigger = {
-            signature_help = {
-                enabled = false,
-            },
+        snippets = {
+            expand = function(snippet)
+                require("luasnip").lsp_expand(snippet)
+            end,
+            active = function(filter)
+                if filter and filter.direction then
+                    return require("luasnip").jumpable(filter.direction)
+                end
+                return require("luasnip").in_snippet()
+            end,
+            jump = function(direction)
+                require("luasnip").jump(direction)
+            end,
         },
-        windows = {
-            autocomplete = {
-                border = "rounded",
+        completion = {
+            list = {
                 selection = "manual",
             },
-            documentation = {
+            menu = {
                 border = "rounded",
-                auto_show = true,
             },
-            signature_help = {
+            documentation = {
+                auto_show = true,
+                window = {
+                    border = "rounded",
+                },
+            },
+        },
+        signature = {
+            enabled = true,
+            window = {
                 border = "rounded",
             },
         },
@@ -54,20 +68,6 @@ return {
                         show_autosnippets = true,
                     },
                 },
-            },
-            snippets = {
-                expand = function(snippet)
-                    require("luasnip").lsp_expand(snippet)
-                end,
-                active = function(filter)
-                    if filter and filter.direction then
-                        return require("luasnip").jumpable(filter.direction)
-                    end
-                    return require("luasnip").in_snippet()
-                end,
-                jump = function(direction)
-                    require("luasnip").jump(direction)
-                end,
             },
         },
     },

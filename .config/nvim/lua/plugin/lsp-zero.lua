@@ -12,7 +12,7 @@ return {
             build = function()
                 pcall(vim.cmd, "MasonUpdate")
             end,
-        },                                       -- optional
+        }, -- optional
         { "williamboman/mason-lspconfig.nvim" }, -- optional
 
         -- autocompletion
@@ -109,13 +109,13 @@ return {
         })
 
         -------- C/C++
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
-        capabilities.offsetEncoding = { "utf-16" }
-        capabilities.textDocument.completion.completionItem.snippetSupport = true
+        local clangd_capabilities = vim.lsp.protocol.make_client_capabilities()
+        clangd_capabilities.offsetEncoding = { "utf-16" }
+        clangd_capabilities.textDocument.completion.completionItem.snippetSupport = true
 
         lspconfig.clangd.setup({
             force_setup = true,
-            capabilities = capabilities,
+            capabilities = clangd_capabilities,
             on_attach = function(client, bufnr)
                 vim.keymap.set("n", "<leader>ch", "<cmd>ClangdSwitchSourceHeader<CR>", {
                     buffer = bufnr,
@@ -181,6 +181,51 @@ return {
 
         --------- Markdown
         lspconfig.marksman.setup({})
+
+        --------- HTML
+        local html_css_capabilities = vim.lsp.protocol.make_client_capabilities()
+        html_css_capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+        lspconfig.html.setup({
+            capabilities = html_css_capabilities,
+        })
+
+        lspconfig.superhtml.setup({})
+
+        --------- CSS
+        lspconfig.cssls.setup({
+            capabilities = html_css_capabilities,
+        })
+
+        --------- Javascript + Typescript
+        lspconfig.ts_ls.setup({
+            settings = {
+                typescript = {
+                    inlayHints = {
+                        includeInlayEnumMemberValueHints = true,
+                        includeInlayFunctionLikeReturnTypeHints = true,
+                        includeInlayFunctionParameterTypeHints = true,
+                        includeInlayParameterNameHints = "all",
+                        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                        includeInlayPropertyDeclarationTypeHints = true,
+                        includeInlayVariableTypeHints = true,
+                        includeInlayVariableTypeHintsWhenArgumentMatchesName = true,
+                    },
+                },
+                javascript = {
+                    inlayHints = {
+                        includeInlayEnumMemberValueHints = true,
+                        includeInlayFunctionLikeReturnTypeHints = true,
+                        includeInlayFunctionParameterTypeHints = true,
+                        includeInlayParameterNameHints = "all",
+                        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                        includeInlayPropertyDeclarationTypeHints = true,
+                        includeInlayVariableTypeHints = true,
+                        includeInlayVariableTypeHintsWhenArgumentMatchesName = true,
+                    },
+                },
+            },
+        })
 
         --------- Borders around hover and signature help floating windows
         vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
