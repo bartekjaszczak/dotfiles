@@ -188,13 +188,26 @@ return {
 
         lspconfig.html.setup({
             capabilities = html_css_capabilities,
+            on_attach = function(client, bufnr)
+                -- Formatting done with prettier (none-ls)
+                client.server_capabilities.documentFormattingProvider = false
+            end,
         })
 
-        lspconfig.superhtml.setup({})
+        lspconfig.superhtml.setup({
+            on_attach = function(client, bufnr)
+                -- Formatting done with prettier (none-ls)
+                client.server_capabilities.documentFormattingProvider = false
+            end,
+        })
 
         --------- CSS
         lspconfig.cssls.setup({
             capabilities = html_css_capabilities,
+            on_attach = function(client, bufnr)
+                -- Formatting done with prettier (none-ls)
+                client.server_capabilities.documentFormattingProvider = false
+            end,
         })
 
         --------- Javascript + Typescript

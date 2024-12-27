@@ -35,6 +35,9 @@ return {
                 selection = "manual",
             },
             menu = {
+                auto_show = function(ctx)
+                    return ctx.mode ~= "cmdline"
+                end,
                 border = "rounded",
             },
             documentation = {
