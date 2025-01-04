@@ -84,3 +84,6 @@ source /usr/share/fzf/completion.bash
 
 # Starship
 eval "$(starship init bash)"
+
+# ssh-agent
+eval "$(keychain -q --eval id_ed25519)"

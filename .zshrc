@@ -128,6 +128,9 @@ alias ..='cd ..'
 alias mkdir='mkdir -pv'
 alias todo='zk edit -m todo'
 
+alias n="nvim"
+alias t="tmux a || tmux"
+
 # Shell options
 HISTFILE=~/.zsh_history
 HISTSIZE=2000
@@ -175,3 +178,6 @@ source /usr/share/fzf/completion.zsh
 
 # Starship
 eval "$(starship init zsh)"
+
+# ssh-agent
+eval "$(keychain -q --eval id_ed25519)"
