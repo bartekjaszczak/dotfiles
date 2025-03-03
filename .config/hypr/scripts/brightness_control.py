@@ -25,10 +25,10 @@ import os
 
 LAST_UPDATED_TIME_THRESHOLD = 60  # How much seconds have to pass before the script will re-read the monitor IDs
 DEFAULT_BRIGHTNESS = 100  # Percent
-TIMEOUT = 30  # How long the script will wait for previous instances to finish in seconds
+TIMEOUT = 60  # How long the script will wait for previous instances to finish in seconds
 
 LAST_UPDATED_INCORRECT = 0
-DEFAULT_MONITOR_IDS = [1]
+DEFAULT_MONITOR_IDS = [1, 2]
 
 BRIGHTNESS_TMP_FILE_PATH = '/tmp/brightness_control_temp'  # Stores the last updated time and monitor IDs
 BRIGHTNESS_LOCK_FILE_PATH = '/tmp/brightness_control_lock'  # Locks the brightness control to prevent multiple instances
@@ -144,10 +144,11 @@ def notify(brightness):
 
 
 def main():
+    STEP = 0.2  # Every 0.2 sec
     try:
         if is_brightness_control_locked():
-            for _ in range(300):
-                time.sleep(0.2)
+            for _ in range(int(TIMEOUT / STEP)):
+                time.sleep(STEP)
                 if not is_brightness_control_locked():
                     break
             else:
