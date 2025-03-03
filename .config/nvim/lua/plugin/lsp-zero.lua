@@ -12,7 +12,7 @@ return {
             build = function()
                 pcall(vim.cmd, "MasonUpdate")
             end,
-        }, -- optional
+        },                                       -- optional
         { "williamboman/mason-lspconfig.nvim" }, -- optional
 
         -- autocompletion
@@ -238,6 +238,14 @@ return {
                     },
                 },
             },
+        })
+
+        --------- Svelte
+        lspconfig.svelte.setup({
+            on_attach = function(client, bufnr)
+                -- Formatting done with prettier (none-ls)
+                client.server_capabilities.documentFormattingProvider = false
+            end,
         })
 
         --------- Borders around hover and signature help floating windows

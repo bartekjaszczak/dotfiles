@@ -26,6 +26,15 @@ return {
                 -- Instead of true it can also be a list of languages
                 additional_vim_regex_highlighting = { "markdown" },
             },
+            incremental_selection = {
+                enable = true,
+                keymaps = {
+                    init_selection = "<cr>",
+                    -- scope_incremental = "<cr>",
+                    node_incremental = "<cr>",
+                    node_decremental = ",",
+                },
+            },
         })
     end,
 }
