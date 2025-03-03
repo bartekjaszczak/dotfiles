@@ -8,7 +8,7 @@ return {
     },
 
     -- use a release tag to download pre-built binaries
-    version = "v0.*",
+    version = "*", -- current config for v0.13.1
 
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
@@ -17,22 +17,29 @@ return {
             preset = "enter",
         },
         snippets = {
-            expand = function(snippet)
-                require("luasnip").lsp_expand(snippet)
-            end,
-            active = function(filter)
-                if filter and filter.direction then
-                    return require("luasnip").jumpable(filter.direction)
-                end
-                return require("luasnip").in_snippet()
-            end,
-            jump = function(direction)
-                require("luasnip").jump(direction)
-            end,
+            -- expand = function(snippet)
+            --     require("luasnip").lsp_expand(snippet)
+            -- end,
+            -- active = function(filter)
+            --     if filter and filter.direction then
+            --         return require("luasnip").jumpable(filter.direction)
+            --     end
+            --     return require("luasnip").in_snippet()
+            -- end,
+            -- jump = function(direction)
+            --     require("luasnip").jump(direction)
+            -- end,
+            preset = "luasnip",
         },
         completion = {
+            keyword = {
+                range = "full",
+            },
             list = {
-                selection = "manual",
+                -- selection = "manual",
+                selection = {
+                    preselect = false,
+                }
             },
             menu = {
                 auto_show = function(ctx)
@@ -57,7 +64,7 @@ return {
             default = {
                 "lsp",
                 "path",
-                "luasnip",
+                "snippets",
                 "buffer",
             },
         },
