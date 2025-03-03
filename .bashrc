@@ -17,7 +17,8 @@ alias free='free -m'
 alias pacman='sudo pacman'
 alias ..='cd ..'
 alias mkdir='mkdir -pv'
-alias todo='zk edit -m todo'
+alias n="nvim"
+alias t="tmux"
 
 # Shell options
 shopt -s checkwinsize
@@ -26,7 +27,7 @@ shopt -s histappend
 shopt -s globstar # Enable ** for recursive globbing
 
 HISTSIZE=2000
-HISTFILESIZE=20000
+HISTFILESIZE=50000
 PS1='[\u@\h \W]\$ '
 
 bind "set completion-ignore-case on"
@@ -38,9 +39,6 @@ export EDITOR=nvim
 # CMake settings
 export CMAKE_EXPORT_COMPILE_COMMANDS=1
 export CMAKE_GENERATOR="Ninja"
-
-# zk
-export ZK_NOTEBOOK_DIR=$HOME/notes
 
 # Archive extractor
 ex() {

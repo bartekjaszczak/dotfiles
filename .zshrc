@@ -126,7 +126,6 @@ alias free='free -m'
 alias pacman='sudo pacman'
 alias ..='cd ..'
 alias mkdir='mkdir -pv'
-alias todo='zk edit -m todo'
 
 alias n="nvim"
 alias t="tmux a || tmux"
@@ -157,9 +156,6 @@ export EDITOR=nvim
 # CMake settings
 export CMAKE_EXPORT_COMPILE_COMMANDS=1
 export CMAKE_GENERATOR="Ninja"
-
-# zk
-export ZK_NOTEBOOK_DIR=$HOME/notes
 
 # XDG paths
 if [ -z "$XDG_CONFIG_HOME" ] ; then
