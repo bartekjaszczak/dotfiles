@@ -144,6 +144,8 @@ return {
                         ["<C-s>"] = require("telescope.actions").select_vertical,
                     },
                 },
+                layout_strategy = "vertical",
+                layout_config = { height = 0.95 },
             },
         })
 

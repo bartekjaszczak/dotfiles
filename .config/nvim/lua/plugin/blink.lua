@@ -8,7 +8,7 @@ return {
     },
 
     -- use a release tag to download pre-built binaries
-    version = "*", -- current config for v0.13.1
+    version = "1.*", -- current config for v0.1.10
 
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
