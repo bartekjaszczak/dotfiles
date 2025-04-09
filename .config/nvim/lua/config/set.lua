@@ -77,4 +77,4 @@ vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSi
 vim.fn.sign_define("DiagnosticSignHint", { text = " ", texthl = "DiagnosticSignHint" })
 
 -- Disable virtual text diagnostics
-vim.diagnostic.config({ virtual_text = false })
+vim.diagnostic.config({ virtual_text = false, virtual_lines = false })
