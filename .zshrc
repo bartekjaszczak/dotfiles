@@ -177,3 +177,6 @@ eval "$(starship init zsh)"
 
 # ssh-agent
 eval "$(keychain -q --eval id_ed25519)"
+
+# Quick learning session on new terminal
+/home/$USER/scripts/practicestuff/console_learning.py
