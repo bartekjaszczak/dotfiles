@@ -4,3 +4,6 @@
 # nvim-specific
 .config/nvim/lazy-lock.json
 .config/nvim/spell/*
+
+# Python
+__pycache__/
