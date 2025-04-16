@@ -11,7 +11,7 @@ def practice(upper_boundary):
     try:
         subprocess.call(["practicestuff", "--behavior-on-error=repeat", "--number-of-questions=10",
                         "times_table", "--upper-boundary-1=" + str(upper_boundary),
-                         "--lower-boundary-2=11" "--upper-boundary-2=" + str(upper_boundary)])
+                         "--lower-boundary-2=11", "--upper-boundary-2=" + str(upper_boundary)])
     except KeyboardInterrupt:
         sys.exit(1)
 

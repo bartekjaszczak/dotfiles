@@ -11,7 +11,7 @@ import practicestuff_times_table_new_up_to
 
 OPTIONS = 3
 POWERS_MAX = 20
-TIMES_TABLE_CURRENT = 11
+TIMES_TABLE_CURRENT = 12
 
 
 def main():
