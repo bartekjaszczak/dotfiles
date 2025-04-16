@@ -172,11 +172,11 @@ fi
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
-# Starship
-eval "$(starship init zsh)"
-
 # ssh-agent
 eval "$(keychain -q --eval id_ed25519)"
 
 # Quick learning session on new terminal
 /home/$USER/scripts/practicestuff/console_learning.py
+
+# Starship (keep at the very end)
+eval "$(starship init zsh)"
