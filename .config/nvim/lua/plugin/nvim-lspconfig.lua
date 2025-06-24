@@ -164,6 +164,9 @@ return {
             capabilities = capabilities,
         })
 
+        --------- Slint
+        lspconfig.slint_lsp.setup({ capabilities = capabilities })
+
         --------- Bash
         lspconfig.bashls.setup({ capabilities = capabilities })
 
