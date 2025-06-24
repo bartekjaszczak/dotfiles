@@ -13,6 +13,7 @@ return {
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
+        cmdline = { enabled = false },
         keymap = {
             preset = "enter",
         },
@@ -39,7 +40,7 @@ return {
                 -- selection = "manual",
                 selection = {
                     preselect = false,
-                }
+                },
             },
             menu = {
                 auto_show = function(ctx)
