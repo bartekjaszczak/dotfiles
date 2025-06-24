@@ -4,5 +4,6 @@ vim.filetype.add({
 vim.filetype.add({
     extension = {
         sig = "c",
+        slint = "slint",
     },
 })
