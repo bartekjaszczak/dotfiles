@@ -10,10 +10,29 @@ import practicestuff_times_table_only
 import practicestuff_times_table_up_to
 import practicestuff_times_table_new_up_to
 
-OPTIONS = 3
-POWERS_MAX = 20
-TIMES_TABLE_CURRENT = 12
+# General config
 RUN_EVERY_MINUTES = 15
+
+POWERS_CHANCE = 0.2
+TIMES_TABLE_CHANCE = 0.4
+DOOMSDAY_CHANCE = 0.4
+
+# Powers config
+POWERS_QUESTION_COUNT = 10
+
+POWERS_MAX = 21
+
+# Doomsday config
+DOOMSDAY_QUESTION_COUNT = 5
+
+# Times table config
+TIMES_TABLE_QUESTION_COUNT = 20
+
+TIMES_TABLE_CURRENT = 13
+
+TIMES_TABLE_INNER_CHANCE_ALL = 0.2
+TIMES_TABLE_INNER_CHANCE_NEW_UP_TO = 0.4
+TIMES_TABLE_INNER_CHANCE_NEW = 0.4
 
 
 def should_run() -> bool:
@@ -38,19 +57,22 @@ def main():
         return
 
     try:
-        opt = random.randint(1, OPTIONS)
-        if opt == 1:
-            practicestuff_doomsday.practice()
-        elif opt == 2:
-            practicestuff_powers_up_to.practice(POWERS_MAX)
-        elif opt == 3:
-            inner_opt = random.randint(1, 3)
-            if inner_opt == 1:
-                practicestuff_times_table_only.practice(TIMES_TABLE_CURRENT)
-            elif inner_opt == 2:
-                practicestuff_times_table_up_to.practice(TIMES_TABLE_CURRENT)
-            elif inner_opt == 3:
-                practicestuff_times_table_new_up_to.practice(TIMES_TABLE_CURRENT)
+        opt = random.random()
+        if opt < DOOMSDAY_CHANCE:
+            practicestuff_doomsday.practice(DOOMSDAY_QUESTION_COUNT)
+        elif opt < DOOMSDAY_CHANCE + POWERS_CHANCE:
+            practicestuff_powers_up_to.practice(POWERS_MAX, POWERS_QUESTION_COUNT)
+        else:
+            inner_opt = random.random()
+            if inner_opt < TIMES_TABLE_INNER_CHANCE_NEW:
+                practicestuff_times_table_only.practice(TIMES_TABLE_CURRENT,
+                                                        TIMES_TABLE_QUESTION_COUNT)
+            elif inner_opt < TIMES_TABLE_INNER_CHANCE_NEW + TIMES_TABLE_INNER_CHANCE_ALL:
+                practicestuff_times_table_up_to.practice(TIMES_TABLE_CURRENT,
+                                                         TIMES_TABLE_QUESTION_COUNT)
+            else:
+                practicestuff_times_table_new_up_to.practice(TIMES_TABLE_CURRENT,
+                                                             TIMES_TABLE_QUESTION_COUNT)
 
     except KeyboardInterrupt:
         sys.exit(1)
