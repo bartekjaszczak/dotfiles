@@ -1,10 +1,43 @@
+-- Treesitter integration (syntax tree)
 return {
     "nvim-treesitter/nvim-treesitter",
 
     build = ":TSUpdate",
     config = function()
         require("nvim-treesitter.configs").setup({
-            ensure_installed = {"bash", "c", "comment", "cpp", "diff", "doxygen", "git_config", "git_rebase", "gitattributes", "gitcommit", "gitignore", "json", "json5", "jsonc", "lua", "luadoc", "make", "markdown", "markdown_inline", "printf", "query", "regex", "rust", "ssh_config", "tmux", "toml", "vim", "vimdoc", "xml", "yaml", "zathurarc"},
+            ensure_installed = {
+                "bash",
+                "c",
+                "comment",
+                "cpp",
+                "diff",
+                "doxygen",
+                "git_config",
+                "git_rebase",
+                "gitattributes",
+                "gitcommit",
+                "gitignore",
+                "json",
+                "json5",
+                "jsonc",
+                "lua",
+                "luadoc",
+                "make",
+                "markdown",
+                "markdown_inline",
+                "printf",
+                "query",
+                "regex",
+                "rust",
+                "ssh_config",
+                "tmux",
+                "toml",
+                "vim",
+                "vimdoc",
+                "xml",
+                "yaml",
+                "zathurarc",
+            },
 
             -- Install parsers synchronously (only applied to `ensure_installed`)
             sync_install = false,

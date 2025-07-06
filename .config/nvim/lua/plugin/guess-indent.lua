@@ -1,3 +1,4 @@
+-- Indentation settings based on file indents
 return {
     "nmac427/guess-indent.nvim",
 

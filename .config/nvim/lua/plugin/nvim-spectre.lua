@@ -1,3 +1,4 @@
+-- Search and replace plugin
 return {
     "nvim-pack/nvim-spectre",
 

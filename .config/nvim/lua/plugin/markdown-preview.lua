@@ -1,3 +1,4 @@
+-- Preview markdown files in the browser
 return {
     "iamcco/markdown-preview.nvim",
 

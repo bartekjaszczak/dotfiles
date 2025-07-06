@@ -1,3 +1,4 @@
+-- File browser as buffer
 return {
     "stevearc/oil.nvim",
     ---@module 'oil'

@@ -1,3 +1,4 @@
+-- Shows code context (function name) if it doesn't fit on screen
 return {
     "nvim-treesitter/nvim-treesitter-context",
 

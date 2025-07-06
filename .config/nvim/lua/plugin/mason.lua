@@ -1,3 +1,4 @@
+-- Install LSPs/linters
 return {
     "williamboman/mason.nvim",
 

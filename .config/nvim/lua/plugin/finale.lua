@@ -1,3 +1,4 @@
+-- Colour scheme
 return {
     "https://gitlab.com/bartekjaszczak/finale-nvim",
     dev = true,

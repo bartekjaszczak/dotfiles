@@ -1,3 +1,4 @@
+-- Zen editing (hides redundant bars and lines)
 return {
     "folke/zen-mode.nvim",
     opts = {

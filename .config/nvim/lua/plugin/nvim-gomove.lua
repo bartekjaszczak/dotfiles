@@ -1,3 +1,4 @@
+-- Move lines/selections up and down
 return {
     "booperlv/nvim-gomove",
 

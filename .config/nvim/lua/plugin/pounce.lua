@@ -1,3 +1,4 @@
+-- Jump to any letter
 return {
     "rlane/pounce.nvim",
 

@@ -1,7 +1,8 @@
+-- Autocompletion + snippets
 return {
+
     "saghen/blink.cmp",
-    lazy = false, -- lazy loading handled internally
-    -- optional: provides snippets for the snippet source
+    lazy = false,
     dependencies = {
         "rafamadriz/friendly-snippets",
         { "l3mon4d3/luasnip", version = "v2.*", build = "make install_jsregexp" },

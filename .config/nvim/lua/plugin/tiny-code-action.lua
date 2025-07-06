@@ -1,3 +1,4 @@
+-- Visualises code actions
 return {
     "rachartier/tiny-code-action.nvim",
     dependencies = {

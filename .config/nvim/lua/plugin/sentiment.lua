@@ -1,3 +1,4 @@
+-- Highlight current parenthesis scope
 return {
     "utilyre/sentiment.nvim",
     version = "*",

@@ -1,3 +1,4 @@
+-- LaTeX editing with preview
 return {
     "lervag/vimtex",
 

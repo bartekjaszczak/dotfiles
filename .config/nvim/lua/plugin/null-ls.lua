@@ -1,3 +1,4 @@
+-- Collection of linters/formatters
 return {
     "nvimtools/none-ls.nvim", -- null-ls is archived, none-ls is a fork
 

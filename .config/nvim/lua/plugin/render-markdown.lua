@@ -1,3 +1,4 @@
+-- Nicer markdown in buffers
 return {
     "MeanderingProgrammer/render-markdown.nvim",
 
