@@ -10,7 +10,6 @@ return {
                 -- Formatting
                 null_ls.builtins.formatting.stylua,
                 null_ls.builtins.formatting.clang_format,
-                -- null_ls.builtins.formatting.prettier, -- don't need this if we have prettierd
                 null_ls.builtins.formatting.prettierd,
                 null_ls.builtins.formatting.shfmt,
             },
