@@ -53,8 +53,9 @@ def save_timestamp():
 
 
 def main():
-    if not should_run():
-        return
+    if "--no-delay" not in sys.argv:
+        if not should_run():
+            return
 
     try:
         opt = random.random()
