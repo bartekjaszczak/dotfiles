@@ -19,6 +19,7 @@ alias ..='cd ..'
 alias mkdir='mkdir -pv'
 alias n="nvim"
 alias t="tmux"
+alias learn='~/scripts/practicestuff/console_learning.py --no-delay'
 
 # Shell options
 shopt -s checkwinsize
