@@ -24,7 +24,7 @@
   border-color: #d67569;
 }
 #cpu:hover {
-  border-color: #fb4934;
+  border-color: #fb3a23;
   transition: 0.3s ease-out;
   opacity: 1.0;
 }
@@ -33,16 +33,16 @@
   border-color: #ffbd7a;
 }
 #memory:hover {
-  border-color: #ff8800;
+  border-color: #ff8000;
   transition: 0.3s ease-out;
   opacity: 1.0;
 }
 
 #workspaces {
-  border-color: #f2de77;
+  border-color: #f2d077;
 }
 #workspaces:hover {
-  border-color: #ffd500;
+  border-color: #ffb900;
   transition: 0.3s ease-out;
   opacity: 1.0;
 }
@@ -57,7 +57,7 @@
 }
 #workspaces button.visible {
   font-weight: bold;
-  background-color: #ffd500;
+  background-color: #ffb900;
   color: #0d0700;
   opacity: 1;
   transition: 0.3s ease-out;
@@ -67,7 +67,7 @@
   transition: 0.3s ease-out;
 }
 #workspaces button.urgent {
-  background-color: #fb4934;
+  background-color: #fb3a23;
   transition: 0.3s ease-out;
 }
 
@@ -95,6 +95,7 @@ window#waybar {
   background: transparent;
 }
 #window {
+  color: #ffb900;
   font-weight: bold;
   padding-left: 32px;
   padding-right: 32px;
