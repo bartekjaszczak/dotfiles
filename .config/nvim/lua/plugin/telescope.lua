@@ -15,12 +15,12 @@ return {
         "<leader>fw",
         "<leader>fl",
 
-        "<leader>cd",
-        "<leader>cs",
-        "gr",
-        "gi",
-        "gd",
-        "go",
+        -- "<leader>cd",
+        -- "<leader>cs",
+        -- "gr",
+        -- "gi",
+        -- "gd",
+        -- "go",
 
         "<leader>fp",
         "<leader>ct",
@@ -82,39 +82,39 @@ return {
         )
 
         -- LSP
-        vim.keymap.set("n", "<leader>cd", function()
-            builtin.diagnostics({ bufnr = 0 })
-        end, { noremap = true, silent = true, desc = "Show diagnostics" })
-        vim.keymap.set(
-            "n",
-            "<leader>cs",
-            builtin.lsp_workspace_symbols,
-            { noremap = true, silent = true, desc = "Find workspace symbols" }
-        )
-        vim.keymap.set(
-            "n",
-            "gr",
-            "<cmd>Telescope lsp_references path_display={'smart'}<cr>",
-            { noremap = true, silent = true, desc = "Go to references" }
-        )
-        vim.keymap.set(
-            "n",
-            "gi",
-            builtin.lsp_implementations,
-            { noremap = true, silent = true, desc = "Go to implementation" }
-        )
-        vim.keymap.set(
-            "n",
-            "gd",
-            builtin.lsp_definitions,
-            { noremap = true, silent = true, desc = "Go to definition" }
-        )
-        vim.keymap.set(
-            "n",
-            "go",
-            builtin.lsp_type_definitions,
-            { noremap = true, silent = true, desc = "Go to type definition" }
-        )
+        -- vim.keymap.set("n", "<leader>cd", function()
+        --     builtin.diagnostics({ bufnr = 0 })
+        -- end, { noremap = true, silent = true, desc = "Show diagnostics" })
+        -- vim.keymap.set(
+        --     "n",
+        --     "<leader>cs",
+        --     builtin.lsp_workspace_symbols,
+        --     { noremap = true, silent = true, desc = "Find workspace symbols" }
+        -- )
+        -- vim.keymap.set(
+        --     "n",
+        --     "gr",
+        --     "<cmd>Telescope lsp_references path_display={'smart'}<cr>",
+        --     { noremap = true, silent = true, desc = "Go to references" }
+        -- )
+        -- vim.keymap.set(
+        --     "n",
+        --     "gi",
+        --     builtin.lsp_implementations,
+        --     { noremap = true, silent = true, desc = "Go to implementation" }
+        -- )
+        -- vim.keymap.set(
+        --     "n",
+        --     "gd",
+        --     builtin.lsp_definitions,
+        --     { noremap = true, silent = true, desc = "Go to definition" }
+        -- )
+        -- vim.keymap.set(
+        --     "n",
+        --     "go",
+        --     builtin.lsp_type_definitions,
+        --     { noremap = true, silent = true, desc = "Go to type definition" }
+        -- )
 
         -- Other
         vim.keymap.set(

@@ -1,8 +1,8 @@
 vim.opt.guicursor = ""
 
 -- Relative line numbers
-vim.opt.nu = true
--- vim.opt.relativenumber = true
+vim.opt.number = true
+vim.opt.relativenumber = false
 
 -- Tab is 4 spaces
 vim.opt.tabstop = 4
@@ -15,6 +15,13 @@ vim.opt.smartindent = true
 -- Don't wrap lines by default
 vim.opt.wrap = false
 
+-- Don't wrap in the middle of a word
+vim.opt.linebreak = true
+
+-- Show whitespace characters
+vim.opt.list = true
+vim.opt.listchars = { tab = "» ", trail = "·", space = "·", nbsp = "␣" }
+
 -- Undodir settings
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -24,6 +31,13 @@ vim.opt.undofile = true
 -- Don't highlight all search results, but highlight the current one
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
+
+-- Smart case search
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+-- Show substitutions in separate pane
+vim.opt.inccommand = "split"
 
 -- Highlight current line
 vim.opt.cursorline = true
@@ -52,29 +66,15 @@ vim.opt.backspace = "indent,eol,start"
 -- Conceal (used for markdown shenanigans)
 vim.opt.conceallevel = 2
 
--- Don't wrap in the middle of a word
-vim.opt.linebreak = true
-
 -- Don't show cmdline by default
 vim.opt.cmdheight = 0
 
-
 -- Enabling than will treat '-' as part of a word and select it accordingly
 -- vim.iskeyword:append("-")
-
--- Don't trace LSPs by default (they generate a lot of logs)
-vim.lsp.set_log_level("off")
--- vim.lsp.set_log_level("trace")
 
 -- Enable spellchecking
 vim.opt.spell = true
 vim.opt.spelllang = "en_gb,pl"
 
--- Diagnostic icons
-vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
-vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
-vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
-vim.fn.sign_define("DiagnosticSignHint", { text = " ", texthl = "DiagnosticSignHint" })
-
--- Disable virtual text diagnostics
-vim.diagnostic.config({ virtual_text = false, virtual_lines = false })
+-- Rounded borders
+vim.opt.winborder = "rounded"
